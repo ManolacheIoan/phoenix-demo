@@ -4,7 +4,10 @@ import "./globals.css";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+const siteUrl = process.env.SITE_URL ?? "https://manolacheioan.github.io/phoenix-demo";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl + "/"),
   title: `${site.name} — sală de fitness în Tecuci`,
   description: `${site.name}, sala de fitness de pe ${site.address.street}, ${site.address.city}. Abonamente, program, antrenament de probă gratuit. Telefon ${site.phone.display}.`,
   icons: { icon: `${base}/icon.svg` },
@@ -12,6 +15,7 @@ export const metadata: Metadata = {
     title: `${site.name} — Sala ta din Tecuci`,
     description: "Abonamente, program și antrenament de probă gratuit.",
     locale: "ro_RO",
+    images: [{ url: "og.png", width: 1200, height: 630, alt: "Fitness Phoenix — Sala ta din Tecuci" }],
     type: "website",
   },
 };

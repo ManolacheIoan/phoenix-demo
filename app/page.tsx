@@ -1,4 +1,4 @@
-import { RevealObserver, TrialForm } from "@/components/client";
+import { MobileMenu, RevealObserver, TrialForm } from "@/components/client";
 import { faq, gallery, highlights, nav, plans, schedule, services, site, steps, TBD, trainers } from "@/content/site";
 
 const icons: Record<string, React.ReactNode> = {
@@ -116,7 +116,8 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-4">
             <a href={`tel:${site.phone.tel}`} className="hidden font-display text-sm font-extrabold text-navy hover:text-red md:block">{site.phone.display}</a>
-            <a href="#proba" className={`${btnRed} !px-5 !py-2.5 !text-xs max-[380px]:!hidden`}>Probă gratuită</a>
+            <a href="#proba" className={`${btnRed} !px-5 !py-2.5 !text-xs max-sm:!hidden`}>Probă gratuită</a>
+            <MobileMenu />
           </div>
         </div>
         <div className="stripe !h-[5px]" aria-hidden="true" />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { days, formspreeId, goals, site } from "@/content/site";
+import { days, formspreeId, goals, nav, site } from "@/content/site";
 
 /** Adaugă clasa „in” elementelor .reveal când intră în ecran. */
 export function RevealObserver() {
@@ -9,10 +9,25 @@ export function RevealObserver() {
     const els = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))),
-      { rootMargin: "0px 0px -10% 0px" },
+      { rootMargin: "0px 0px -6% 0px" },
     );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    els.forEach((el) => {
+      // Ce e deja deasupra ecranului (ex. sosire direct pe #contact) apare imediat, fără animație.
+      if (el.getBoundingClientRect().bottom < 0) el.classList.add("in");
+      else io.observe(el);
+    });
+    // La click pe un link intern, secțiunea țintă apare instant, ca să nu ajungi pe un loc gol.
+    const showTarget = (hash: string) => {
+      const t = hash.length > 1 ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+      t?.querySelectorAll(".reveal").forEach((el) => el.classList.add("in", "instant"));
+    };
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest('a[href^="#"]');
+      if (a) showTarget(a.getAttribute("href")!);
+    };
+    showTarget(location.hash);
+    document.addEventListener("click", onClick);
+    return () => { io.disconnect(); document.removeEventListener("click", onClick); };
   }, []);
   return null;
 }
@@ -35,7 +50,8 @@ export function TrialForm() {
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
     if (!formspreeId) {
-      window.open(whatsappUrl(data), "_blank", "noopener");
+      const url = whatsappUrl(data);
+      if (!window.open(url, "_blank", "noopener")) window.location.href = url;
       return;
     }
     setStatus("sending");
@@ -69,7 +85,7 @@ export function TrialForm() {
       </label>
       <label className="block text-sm font-semibold">
         Telefon
-        <input name="telefon" type="tel" required autoComplete="tel" pattern="[0-9 +]{10,15}" className={field} placeholder="07xx xxx xxx" />
+        <input name="telefon" type="tel" required autoComplete="tel" pattern="[0-9 +.\-]{10,16}" title="Un număr de telefon, ex. 0728 888 188" inputMode="tel" className={field} placeholder="07xx xxx xxx" />
       </label>
       <label className="block text-sm font-semibold">
         Obiectiv
@@ -107,5 +123,48 @@ export function TrialForm() {
         </p>
       </div>
     </form>
+  );
+}
+
+/** Meniu pentru ecrane mici: se închide la click pe link, la Escape și la click în afară. */
+export function MobileMenu() {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onClick = (e: MouseEvent) => !(e.target as HTMLElement).closest("[data-menu]") && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
+    return () => { document.removeEventListener("keydown", onKey); document.removeEventListener("click", onClick); };
+  }, [open]);
+  return (
+    <div data-menu className="lg:hidden">
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls="meniu-mobil"
+        aria-label={open ? "Închide meniul" : "Deschide meniul"}
+        onClick={() => setOpen((o) => !o)}
+        className="grid h-11 w-11 place-items-center rounded-xl border border-navy/15 text-navy focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-blue"
+      >
+        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
+          {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+        </svg>
+      </button>
+      <nav id="meniu-mobil" aria-label="Meniu mobil" hidden={!open} className="absolute inset-x-0 top-full border-t border-navy/10 bg-white shadow-xl">
+        <ul className="mx-auto max-w-6xl px-5 py-3 sm:px-8">
+          {nav.map((n) => (
+            <li key={n.href}>
+              <a href={n.href} onClick={() => setOpen(false)} className="block border-b border-navy/5 py-3.5 font-display font-extrabold uppercase tracking-wide text-navy hover:text-red">
+                {n.label}
+              </a>
+            </li>
+          ))}
+          <li className="pt-4 pb-2">
+            <a href="#proba" onClick={() => setOpen(false)} className="block rounded-full bg-red py-3.5 text-center font-display font-extrabold uppercase text-white">Antrenament de probă gratuit</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }
