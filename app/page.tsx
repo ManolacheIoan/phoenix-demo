@@ -284,7 +284,7 @@ export default function Home() {
                   <span className="mt-1 block font-semibold text-white/85">din {site.google.reviewCount} de recenzii pe Google</span>
                 </span>
               </div>
-              <a href={site.google.reviewsUrl} target="_blank" rel="noopener noreferrer" className={`${btnWhite} w-full !px-5 sm:w-auto`}>Vezi recenziile pe Google <Arrow /></a>
+              <a href={site.google.reviewsUrl} target="_blank" rel="noopener noreferrer" className={`${btnWhite} w-full !px-5 sm:w-auto`}><span className="sm:hidden">Recenziile pe Google</span><span className="hidden sm:inline">Vezi recenziile pe Google</span> <Arrow /></a>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[1fr_1.3fr]">
