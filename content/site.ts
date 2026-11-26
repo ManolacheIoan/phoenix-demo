@@ -71,6 +71,26 @@ export const gallery = [
   "Vitamin fitness bar",
 ];
 
+export const highlights = [
+  { title: "Zonă de cardio", text: "Benzi de alergare și eliptice aliniate, cu ecrane în față." },
+  { title: "Aparate de forță", text: "Aparate pentru toate grupele musculare și greutăți libere." },
+  { title: "Vitamin fitness bar", text: "Cafea, shake-uri și o pauză bună după antrenament." },
+  { title: "Vestiare îngrijite", text: "Dulăpioare numerotate și bănci. Dușuri: [de completat]." },
+];
+
+export const steps = [
+  { title: "Lasă-ne numărul", text: "Completezi formularul în 30 de secunde sau ne suni." },
+  { title: "Vii la probă", text: "Îți arătăm sala și aparatele. Gratuit, fără obligații." },
+  { title: "Alegi abonamentul", text: "Doar dacă ți-a plăcut. Fără presiune." },
+];
+
+export const faq = [
+  { q: "Am nevoie de experiență ca să încep?", a: "Nu. La antrenamentul de probă îți arătăm aparatele și cum le folosești în siguranță." },
+  { q: "Antrenamentul de probă chiar e gratuit?", a: "Da. Vii, vezi sala, încerci aparatele. Abonamentul îl alegi doar dacă vrei." },
+  { q: "Ce trebuie să aduc?", a: "Echipament sport, încălțăminte curată de sală, un prosop și apă." },
+  { q: "Există parcare în apropiere?", a: TBD },
+];
+
 export const goals = ["Slăbire", "Masă musculară", "Tonifiere", "Condiție fizică", "Altceva"];
 export const days = ["Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă", "Duminică"];
 

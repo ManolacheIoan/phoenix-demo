@@ -39,3 +39,13 @@ body { background: #fff; color: var(--color-navy); }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* --- v3 premium --- */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { animation: marquee 38s linear infinite; }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.floaty { animation: floaty 5s ease-in-out infinite; }
+.grain { background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 18px 18px; }
+.h-underline { background: linear-gradient(transparent 68%, rgba(200,16,46,.18) 68% 92%, transparent 92%); }
+details summary::-webkit-details-marker { display: none; }
+@media (prefers-reduced-motion: reduce) { .marquee, .floaty { animation: none; } }
