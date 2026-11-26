@@ -56,13 +56,15 @@ function GeoPhoenix({ className }: { className?: string }) {
   );
 }
 
-/** Ciob low-poly: un triunghi plin și unul din linii, ca desenele de pe tejgheaua barului. */
+/** Marcaj de secțiune: phoenix-ul din logo, mic, urmat de o linie scurtă. */
 function Shard({ light }: { light?: boolean }) {
   return (
-    <svg viewBox="0 0 34 16" className="h-4 w-[34px]" aria-hidden="true">
-      <path d="M1 15 9 1l7 14Z" fill={light ? "#fff" : "#c8102e"} />
-      <path d="M9 1 33 9 16 15M33 9 27 1" fill="none" stroke={light ? "rgba(255,255,255,.7)" : "#13203f"} strokeWidth="1.6" strokeLinejoin="round" />
-    </svg>
+    <span className="inline-flex items-center gap-2" aria-hidden="true">
+      <span className={`grid h-8 w-8 place-items-center rounded-lg ${light ? "bg-white" : "bg-red"}`}>
+        <GeoPhoenix className={`h-6 w-6 ${light ? "text-navy" : "text-white"} [&_path]:[stroke-width:3.4]`} />
+      </span>
+      <span className={`h-[2px] w-5 ${light ? "bg-white/50" : "bg-red/40"}`} />
+    </span>
   );
 }
 
