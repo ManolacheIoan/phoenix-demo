@@ -38,7 +38,7 @@ export function Footer({ home = true }: { home?: boolean }) {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className={`${wrap} flex flex-col gap-3 py-6 pb-28 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between sm:pb-6`}>
+        <div className={`${wrap} flex flex-col gap-3 py-6 pb-28 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between sm:pb-6`}>
           <p>© {new Date().getFullYear()} {site.name}. Toate drepturile rezervate.</p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             <li><Link href="/confidentialitate/" className={linkCls}>Confidențialitate</Link></li>

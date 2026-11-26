@@ -1,24 +1,25 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { site } from "@/content/site";
-import { siteUrl } from "@/lib/paths";
+import { base, siteUrl } from "@/lib/paths";
 import "./globals.css";
 
-const montserrat = Montserrat({ subsets: ["latin", "latin-ext"], variable: "--font-montserrat", display: "swap" });
-const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
+// Se preîncarcă doar „latin”; fișierele latin-ext (ă, î, ș, ț) sunt declarate și se încarcă imediat ce apar diacritice.
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl + "/"),
   title: { default: `${site.name} — sală de fitness în Tecuci`, template: `%s | ${site.name}` },
   description: `${site.name}, sala de fitness de pe ${site.address.street}, ${site.address.city}. Cardio, aparate de forță, abonamente și antrenament de probă gratuit. Telefon ${site.phone.display}.`,
   alternates: { canonical: "./" },
-  icons: { icon: "icon.svg", apple: "apple-icon.png" },
+  icons: { icon: `${base}/icon.svg`, apple: `${base}/apple-icon.png` },
   openGraph: {
     title: `${site.name} — Sala ta din Tecuci`,
     description: "Cardio, forță, fitness bar. Vino la un antrenament de probă gratuit.",
     locale: "ro_RO",
     siteName: site.name,
-    images: [{ url: "og.png", width: 1200, height: 630, alt: "Fitness Phoenix — Sala ta din Tecuci" }],
+    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: "Fitness Phoenix — Sala ta din Tecuci" }],
     type: "website",
   },
 };

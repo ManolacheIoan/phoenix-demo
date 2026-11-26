@@ -4,7 +4,7 @@ export const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 /** Adresa publică a site-ului, fără „/” la final. */
 export const siteUrl = (process.env.SITE_URL ?? "https://manolacheioan.github.io/phoenix-demo").replace(/\/$/, "");
 
-export const imageWidths = [640, 1024, 1600] as const;
+export const imageWidths = [640, 828, 1024, 1600] as const;
 
 /** srcset pentru o poză din public/images. */
 export function srcSet(id: string) {

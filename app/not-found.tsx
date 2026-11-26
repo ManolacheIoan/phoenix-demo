@@ -16,7 +16,7 @@ export default function NotFound() {
         <Link href="/" className="mt-8 inline-flex items-center gap-2 rounded-full bg-red px-7 py-3.5 font-display font-extrabold uppercase text-white transition hover:bg-red-dark focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-white">
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />Prima pagină
         </Link>
-        <p className="mt-6 text-sm text-white/60">{site.name} · <a href={`tel:${site.phone.tel}`} className="underline">{site.phone.display}</a></p>
+        <p className="mt-6 text-sm text-white/70">{site.name} · <a href={`tel:${site.phone.tel}`} className="underline">{site.phone.display}</a></p>
       </div>
     </main>
   );

@@ -61,7 +61,7 @@ export function Gallery() {
           );
         })}
       </ul>
-      <p className="mt-4 text-sm text-navy/60">Poze ilustrative. Se înlocuiesc cu fotografiile reale ale sălii.</p>
+      <p className="mt-4 text-sm text-navy/70">Poze ilustrative. Se înlocuiesc cu fotografiile reale ale sălii.</p>
 
       <dialog
         ref={dialog}

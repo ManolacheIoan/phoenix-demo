@@ -53,7 +53,7 @@ export default function Home() {
                 <div className="geo-light absolute inset-0 opacity-25" />
               </div>
               <div className="relative aspect-[4/4.3] overflow-hidden rounded-[2rem] bg-navy shadow-[0_40px_80px_-30px_rgba(19,32,63,.6)] sm:aspect-[4/3.9]">
-                <Photo id="hero" priority sizes="(min-width: 1024px) 34rem, 100vw" />
+                <Photo id="hero" priority sizes="(min-width: 1024px) 34rem, 92vw" />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
                   <p className="font-display text-sm font-black uppercase tracking-[0.3em] text-white/85">Forță · Cardio · Energie</p>
@@ -118,7 +118,7 @@ export default function Home() {
                   </div>
                   <p className="mt-5 flex flex-wrap items-baseline gap-2 border-b border-current/10 pb-5">
                     <span className="font-display text-2xl font-black"><T>{p.price}</T></span>
-                    <span className={`text-sm font-semibold ${p.featured ? "text-white/70" : "text-navy/60"}`}>{p.period}</span>
+                    <span className={`text-sm font-semibold ${p.featured ? "text-white/70" : "text-navy/70"}`}>{p.period}</span>
                   </p>
                   <ul className={`mt-5 flex-1 space-y-3 text-[0.95rem] ${p.featured ? "text-white/90" : "text-navy/80"}`}>
                     {p.features.map((f) => (

@@ -32,7 +32,7 @@ export function Logo({ compact, light }: { compact?: boolean; light?: boolean })
         <GeoPhoenix className={`h-7 w-7 ${light ? "text-navy" : "text-white"}`} strokeWidth={2.8} />
       </span>
       <span className="font-display leading-none">
-        <span className={`block text-[0.62rem] font-bold uppercase tracking-[0.32em] ${light ? "text-[#ff9aa8]" : "text-red"}`}>Fitness</span>
+        <span className={`block text-[0.62rem] font-bold uppercase tracking-[0.32em] ${light ? "text-[#ff9aa8]" : "text-red"}`}>Fitness </span>
         <span className={`block text-xl font-black uppercase tracking-tight ${light ? "text-white" : "text-navy"}`}>Phoenix</span>
       </span>
     </span>

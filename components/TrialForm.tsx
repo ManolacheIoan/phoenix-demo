@@ -134,7 +134,7 @@ export function TrialForm() {
         {err("zi")}
       </label>
       <label className="block text-sm font-bold">
-        Interval <span className="font-normal text-navy/60">(opțional)</span>
+        Interval <span className="font-normal text-navy/70">(opțional)</span>
         <select name="interval" className={cls("interval")} defaultValue="">
           <option value="">Oricând</option>
           {timeSlots.map((t) => <option key={t}>{t}</option>)}

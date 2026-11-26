@@ -4,7 +4,7 @@ import sharp from "sharp";
 import fs from "node:fs";
 const src = process.argv[2];
 const map = { hero: "machines", forta: "powerrack", cardio: "cardiorow", gantere: "dumbbells", sala: "darkgym", vestiar: "lockergray", bar: "whey", industrial: "industrial" };
-const widths = [640, 1024, 1600];
+const widths = [640, 828, 1024, 1600];
 const out = {};
 for (const [name, file] of Object.entries(map)) {
   const base = sharp(`${src}/${file}.jpg`).rotate();
