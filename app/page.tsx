@@ -104,7 +104,7 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-4">
             <a href={`tel:${site.phone.tel}`} className="hidden font-display text-sm font-extrabold text-navy hover:text-red md:block">{site.phone.display}</a>
-            <a href="#proba" className={`${btnRed} hidden !px-5 !py-2.5 !text-xs sm:inline-flex`}>Probă gratuită</a>
+            <a href="#proba" className={`${btnRed} !px-5 !py-2.5 !text-xs max-[380px]:!hidden`}>Probă gratuită</a>
           </div>
         </div>
         <div className="stripe !h-[5px]" aria-hidden="true" />
@@ -401,7 +401,7 @@ export default function Home() {
         <a href={`tel:${site.phone.tel}`} className={`${btn} flex-1 !px-4 !py-3 bg-navy text-white`} aria-label={`Sună la ${site.phone.display}`}><Icon name="phone" className="h-4 w-4" /> Sună</a>
         <a href="#proba" className={`${btn} flex-[1.4] !px-4 !py-3 bg-red text-white`}>Probă gratuită</a>
       </div>
-      <a href={`tel:${site.phone.tel}`} className={`${btnRed} fixed bottom-6 right-6 z-50 hidden !px-6 !py-4 sm:inline-flex`} aria-label={`Sună la ${site.phone.display}`}>
+      <a href={`tel:${site.phone.tel}`} className={`${btnRed} fixed bottom-6 right-6 z-50 !px-6 !py-4 max-sm:!hidden`} aria-label={`Sună la ${site.phone.display}`}>
         <Icon name="phone" className="h-5 w-5" /> Sună
       </a>
     </>
