@@ -1,52 +1,74 @@
-@import "@fontsource-variable/montserrat/wght.css";
-@import "@fontsource-variable/inter/wght.css";
 @import "tailwindcss";
 
-/* Tema sălii: pereți albi, dungi roșu–albastru, bleumarin, desene geometrice cu linii negre. */
+/* Tema sălii: pereți albi, bleumarin, accent roșu, desene geometrice cu linii (ca tejgheaua barului). */
 @theme {
-  --font-display: "Montserrat Variable", system-ui, sans-serif;
-  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
   --color-navy: #13203f;
   --color-navy-2: #1c2d55;
   --color-red: #c8102e;
+  --color-red-dark: #a50d26;
   --color-blue: #1e4fd8;
-  --color-paper: #f6f7f9;
+  --color-paper: #f5f6f8;
   --color-line: #111111;
   --color-neon: #3fd16b;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-body { background: #fff; color: var(--color-navy); }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; -webkit-tap-highlight-color: transparent; }
+body { background: #fff; color: var(--color-navy); text-rendering: optimizeLegibility; }
+::selection { background: var(--color-red); color: #fff; }
 
-/* Dunga tricoloră din sală */
-.stripe { height: 10px; background: linear-gradient(to bottom, var(--color-blue) 0 33%, #fff 33% 66%, var(--color-red) 66%); }
-.stripe-v { background: linear-gradient(to right, var(--color-blue) 0 33%, #fff 33% 66%, var(--color-red) 66%); }
+/* Dunga din sală (albastru peste roșu, ca pe pereți) */
+.stripe { height: 6px; background: linear-gradient(to bottom, var(--color-blue) 0 50%, var(--color-red) 50%); }
 
-/* Model geometric (ca tejgheaua barului) */
+/* Model geometric din linii */
 .geo {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' viewBox='0 0 240 160' fill='none' stroke='%23111' stroke-width='1.4'%3E%3Cpath d='M0 160 60 20 130 160M60 20 240 90 130 160M240 90 200 0M0 40 60 20'/%3E%3C/svg%3E");
 }
-/* Podeaua gri cu text */
-.floor { background-color: #e9ebef; background-image: radial-gradient(#c9cdd6 1px, transparent 1.2px); background-size: 14px 14px; }
+.geo-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' viewBox='0 0 240 160' fill='none' stroke='%23fff' stroke-width='1.2'%3E%3Cpath d='M0 160 60 20 130 160M60 20 240 90 130 160M240 90 200 0M0 40 60 20'/%3E%3C/svg%3E");
+}
+/* Podeaua gri cu puncte */
+.floor { background-color: #eceef2; background-image: radial-gradient(#cfd3db 1px, transparent 1.2px); background-size: 14px 14px; }
+.grain { background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px); background-size: 18px 18px; }
 
-.tbd { color: var(--color-red); font-style: italic; font-weight: 600; }
+/* „[de completat]”: etichetă discretă, nu text strident */
+.tbd {
+  display: inline-block;
+  padding: 0.05em 0.5em;
+  border: 1px dashed color-mix(in oklab, var(--color-red) 45%, transparent);
+  border-radius: 0.4em;
+  background: color-mix(in oklab, var(--color-red) 6%, transparent);
+  color: var(--color-red);
+  font-size: 0.82em;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  vertical-align: 0.08em;
+}
+.on-dark .tbd { color: #ffd0d7; border-color: rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.08); }
 
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+/* Apariție la scroll */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease-out-soft), transform 0.6s var(--ease-out-soft); }
 .reveal.in { opacity: 1; transform: none; }
 .reveal.instant { transition: none; }
 .no-js .reveal { opacity: 1; transform: none; }
 
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { animation: marquee 40s linear infinite; }
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.floaty { animation: floaty 5s ease-in-out infinite; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.fade-in { animation: fade-in 0.25s ease-out; }
+
+details summary::-webkit-details-marker { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee, .floaty, .fade-in { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
-
-/* --- v3 premium --- */
-@keyframes marquee { to { transform: translateX(-50%); } }
-.marquee { animation: marquee 38s linear infinite; }
-@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-.floaty { animation: floaty 5s ease-in-out infinite; }
-.grain { background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 18px 18px; }
-.h-underline { background: linear-gradient(transparent 68%, rgba(200,16,46,.18) 68% 92%, transparent 92%); }
-details summary::-webkit-details-marker { display: none; }
-@media (prefers-reduced-motion: reduce) { .marquee, .floaty { animation: none; } }
