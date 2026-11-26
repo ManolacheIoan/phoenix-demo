@@ -19,7 +19,7 @@ function NavLink({ home, href, label, className, onClick }: NavLinkProps) {
   );
 }
 
-/** Header fix: se micșorează la scroll. Pe paginile secundare, linkurile duc la secțiunile din prima pagină. */
+/** Header fix: se micșorează la scroll (76px → 60px); mb-4 compensează diferența, ca pagina să nu „sară”. Pe paginile secundare, linkurile duc la secțiunile din prima pagină. */
 export function Header({ home = true }: { home?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -43,7 +43,7 @@ export function Header({ home = true }: { home?: boolean }) {
   return (
     <header
       data-menu
-      className={`sticky top-0 z-40 border-b transition-[background-color,box-shadow,border-color] duration-300 ${scrolled || open ? "border-navy/10 bg-white/95 shadow-[0_8px_30px_-18px_rgba(19,32,63,.45)] backdrop-blur-md" : "border-transparent bg-white"}`}
+      className={`sticky top-0 z-40 border-b transition-[background-color,box-shadow,border-color,margin] duration-300 ${scrolled ? "mb-4" : "mb-0"} ${scrolled || open ? "border-navy/10 bg-white/95 shadow-[0_8px_30px_-18px_rgba(19,32,63,.45)] backdrop-blur-md" : "border-transparent bg-white"}`}
     >
       <div className={`mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-5 transition-[height] duration-300 sm:px-8 2xl:max-w-7xl ${scrolled ? "h-[60px]" : "h-[76px]"}`}>
         {home ? (
