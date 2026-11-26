@@ -20,7 +20,7 @@ export function RevealObserver() {
 type Status = "idle" | "sending" | "sent" | "error";
 
 const field =
-  "mt-1 w-full rounded-lg border border-white/20 bg-ink px-4 py-3 text-white placeholder:text-white/50 focus:border-flame focus:outline-none focus:ring-2 focus:ring-flame/50";
+  "mt-1 w-full rounded-lg border border-navy/25 bg-white px-4 py-3 text-navy placeholder:text-navy/50 focus:border-blue focus:outline-none focus:ring-2 focus:ring-blue/40";
 
 export function TrialForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -55,14 +55,14 @@ export function TrialForm() {
 
   if (status === "sent") {
     return (
-      <p role="status" className="rounded-2xl border border-flame/40 bg-coal p-8 text-lg">
+      <p role="status" className="rounded-2xl border border-blue/40 bg-white text-navy p-8 text-lg">
         Mulțumim! Te sunăm în curând să stabilim ora antrenamentului de probă.
       </p>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-5 rounded-2xl border border-white/10 bg-coal p-6 sm:grid-cols-2 sm:p-8">
+    <form onSubmit={onSubmit} className="grid gap-5 rounded-2xl border border-navy/10 bg-white p-6 text-navy shadow-xl sm:grid-cols-2 sm:p-8">
       <label className="block text-sm font-semibold">
         Nume
         <input name="nume" required autoComplete="name" className={field} placeholder="Numele tău" />
@@ -89,15 +89,15 @@ export function TrialForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="btn-fire w-full rounded-full px-8 py-4 font-display text-lg font-extrabold uppercase tracking-wide transition hover:brightness-110 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
+          className="w-full rounded-full bg-red text-white px-8 py-4 font-display text-lg font-extrabold uppercase tracking-wide transition hover:brightness-110 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-navy sm:w-auto"
         >
           {status === "sending" ? "Se trimite…" : formspreeId ? "Rezervă antrenamentul gratuit" : "Trimite pe WhatsApp"}
         </button>
-        <p className="mt-3 text-sm text-white/70" aria-live="polite">
+        <p className="mt-3 text-sm text-navy/75" aria-live="polite">
           {status === "error" ? (
             <>
               Nu am putut trimite formularul.{" "}
-              <a className="font-semibold text-ember underline" href={`tel:${site.phone.tel}`}>Sună-ne la {site.phone.display}</a>.
+              <a className="font-semibold text-red underline" href={`tel:${site.phone.tel}`}>Sună-ne la {site.phone.display}</a>.
             </>
           ) : formspreeId ? (
             "Te sunăm noi pentru confirmare."

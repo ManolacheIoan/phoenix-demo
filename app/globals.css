@@ -2,36 +2,40 @@
 @import "@fontsource-variable/inter/wght.css";
 @import "tailwindcss";
 
+/* Tema sălii: pereți albi, dungi roșu–albastru, bleumarin, desene geometrice cu linii negre. */
 @theme {
   --font-display: "Montserrat Variable", system-ui, sans-serif;
   --font-sans: "Inter Variable", system-ui, sans-serif;
-  --color-ink: #0d0b0a;
-  --color-coal: #17130f;
-  --color-ash: #241d18;
-  --color-flame: #ff5a1f;
-  --color-ember: #ff8a3d;
-  --color-blaze: #e8341c;
+  --color-navy: #13203f;
+  --color-navy-2: #1c2d55;
+  --color-red: #c8102e;
+  --color-blue: #1e4fd8;
+  --color-paper: #f6f7f9;
+  --color-line: #111111;
+  --color-neon: #3fd16b;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-body { background: var(--color-ink); color: #f5efe9; }
+body { background: #fff; color: var(--color-navy); }
 
-.fire-text {
-  background: linear-gradient(90deg, var(--color-ember), var(--color-flame), var(--color-blaze));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+/* Dunga tricoloră din sală */
+.stripe { height: 10px; background: linear-gradient(to bottom, var(--color-blue) 0 33%, #fff 33% 66%, var(--color-red) 66%); }
+.stripe-v { background: linear-gradient(to right, var(--color-blue) 0 33%, #fff 33% 66%, var(--color-red) 66%); }
+
+/* Model geometric (ca tejgheaua barului) */
+.geo {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' viewBox='0 0 240 160' fill='none' stroke='%23111' stroke-width='1.4'%3E%3Cpath d='M0 160 60 20 130 160M60 20 240 90 130 160M240 90 200 0M0 40 60 20'/%3E%3C/svg%3E");
 }
-.btn-fire { background: linear-gradient(135deg, var(--color-ember), var(--color-flame)); color: #170a04; }
-.tbd { color: #ffb48a; font-style: italic; }
+/* Podeaua gri cu text */
+.floor { background-color: #e9ebef; background-image: radial-gradient(#c9cdd6 1px, transparent 1.2px); background-size: 14px 14px; }
+
+.tbd { color: var(--color-red); font-style: italic; font-weight: 600; }
 
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }
 
-@keyframes glow { 0%,100% { opacity: .55; } 50% { opacity: .85; } }
-.glow { animation: glow 6s ease-in-out infinite; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .glow { animation: none; }
 }

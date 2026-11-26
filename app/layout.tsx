@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#0d0b0a", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#ffffff", colorScheme: "light" };
 
 const jsonLd = {
   "@context": "https://schema.org",

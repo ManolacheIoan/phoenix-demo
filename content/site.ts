@@ -68,7 +68,7 @@ export const gallery = [
   "Zona de cardio",
   "Vestiar",
   "Recepție",
-  "Zona de stretching",
+  "Vitamin fitness bar",
 ];
 
 export const goals = ["Slăbire", "Masă musculară", "Tonifiere", "Condiție fizică", "Altceva"];
