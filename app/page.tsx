@@ -56,11 +56,21 @@ function GeoPhoenix({ className }: { className?: string }) {
   );
 }
 
+/** Ciob low-poly: un triunghi plin și unul din linii, ca desenele de pe tejgheaua barului. */
+function Shard({ light }: { light?: boolean }) {
+  return (
+    <svg viewBox="0 0 34 16" className="h-4 w-[34px]" aria-hidden="true">
+      <path d="M1 15 9 1l7 14Z" fill={light ? "#fff" : "#c8102e"} />
+      <path d="M9 1 33 9 16 15M33 9 27 1" fill="none" stroke={light ? "rgba(255,255,255,.7)" : "#13203f"} strokeWidth="1.6" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function Head({ k, title, intro, light, center }: { k: string; title: React.ReactNode; intro?: string; light?: boolean; center?: boolean }) {
   return (
     <div className={`reveal mb-9 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
       <p className={`inline-flex items-center gap-2.5 font-display text-xs font-bold uppercase tracking-[0.22em] ${light ? "text-white/80" : "text-red"}`}>
-        <span className="stripe-v inline-block h-2.5 w-8 rounded-sm" aria-hidden="true" />
+        <Shard light={light} />
         {k}
       </p>
       <h2 className={`mt-3 font-display text-[2rem] font-black uppercase leading-[1.05] tracking-tight sm:text-[2.75rem] ${light ? "text-white" : "text-navy"}`}>{title}</h2>
@@ -140,7 +150,7 @@ export default function Home() {
 
             {/* compoziție */}
             <div className="relative mx-auto aspect-[4/4.4] w-full max-w-[26rem]" aria-hidden="true">
-              <div className="stripe-v absolute -right-3 bottom-6 top-10 w-[92%] -rotate-3 rounded-[2rem]" />
+              <div className="absolute -right-3 bottom-6 top-10 w-[92%] -rotate-3 overflow-hidden rounded-[2rem] bg-red"><div className="geo absolute inset-0 opacity-25 invert" /></div>
               <div className="grain absolute inset-0 overflow-hidden rounded-[2rem] bg-navy shadow-[0_30px_60px_-20px_rgba(19,32,63,.55)]">
                 <div className="geo absolute inset-0 opacity-[0.14] invert" />
                 <GeoPhoenix className="absolute left-1/2 top-[46%] h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/2 text-white" />
@@ -352,7 +362,7 @@ export default function Home() {
         <section id="contact" className={`bg-paper ${sec}`}>
           <div className={wrap}>
             <div className="reveal grain relative mb-10 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-3xl bg-navy p-8 text-white sm:flex-row sm:items-center sm:p-10">
-              <div className="stripe-v absolute inset-y-0 left-0 w-2" aria-hidden="true" />
+              <div className="absolute inset-y-0 left-0 w-2 bg-red" aria-hidden="true" />
               <div className="flex items-center gap-5">
                 <span className="font-display text-6xl font-black leading-none">{site.google.rating}</span>
                 <span>
